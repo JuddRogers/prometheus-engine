@@ -522,6 +522,7 @@ func (r *operatorConfigReconciler) makeAlertmanagerConfigs(ctx context.Context, 
 				InsecureSkipVerify: am.TLS.InsecureSkipVerify,
 				ServerName:         am.TLS.ServerName,
 			}
+
 			if am.TLS.CA != nil {
 				p := pathForSelector(r.opts.PublicNamespace, am.TLS.CA)
 				b, err := getSecretOrConfigMapBytes(ctx, r.client, r.opts.PublicNamespace, am.TLS.CA)
@@ -634,7 +635,7 @@ func getSecretOrConfigMapBytes(ctx context.Context, kClient client.Reader, names
 	return b, nil
 }
 
-// getSecretKeyBytes processes the given NamespacedSecretKeySelector and returns the referenced data.
+// getSecretKeyBytes processes the given SecretKeySelector and returns the referenced data.
 func getSecretKeyBytes(ctx context.Context, kClient client.Reader, namespace string, sel *corev1.SecretKeySelector) ([]byte, error) {
 	var (
 		secret = &corev1.Secret{}

@@ -29,6 +29,7 @@ This Document documents the types introduced by the GMP CRDs to be consumed by u
 * [ExportFilters](#exportfilters)
 * [GlobalRules](#globalrules)
 * [GlobalRulesList](#globalruleslist)
+* [HTTPClientConfig](#httpclientconfig)
 * [KubeletScraping](#kubeletscraping)
 * [LabelMapping](#labelmapping)
 * [ManagedAlertmanagerSpec](#managedalertmanagerspec)
@@ -53,6 +54,7 @@ This Document documents the types introduced by the GMP CRDs to be consumed by u
 * [ScrapeEndpointStatus](#scrapeendpointstatus)
 * [ScrapeLimits](#scrapelimits)
 * [SecretOrConfigMap](#secretorconfigmap)
+* [TLS](#tls)
 * [TLSConfig](#tlsconfig)
 * [TargetLabels](#targetlabels)
 * [TargetStatusSpec](#targetstatusspec)
@@ -226,6 +228,19 @@ GlobalRulesList is a list of GlobalRules.
 | ----- | ----------- | ------ | -------- |
 | metadata |  | [metav1.ListMeta](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#listmeta-v1-meta) | false |
 | items |  | [][GlobalRules](#globalrules) | true |
+
+[Back to TOC](#table-of-contents)
+
+## HTTPClientConfig
+
+HTTPClientConfig stores HTTP-client configurations.
+
+
+<em>appears in: [ScrapeEndpoint](#scrapeendpoint)</em>
+
+| Field | Description | Scheme | Required |
+| ----- | ----------- | ------ | -------- |
+| tls | Configures the scrape request's TLS settings. | *[TLS](#tls) | false |
 
 [Back to TOC](#table-of-contents)
 
@@ -540,6 +555,7 @@ ScrapeEndpoint specifies a Prometheus metrics endpoint to scrape.
 | interval | Interval at which to scrape metrics. Must be a valid Prometheus duration. | string | false |
 | timeout | Timeout for metrics scrapes. Must be a valid Prometheus duration. Must not be larger then the scrape interval. | string | false |
 | metricRelabeling | Relabeling rules for metrics scraped from this endpoint. Relabeling rules that override protected target labels (project_id, location, cluster, namespace, job, instance, or __address__) are not permitted. The labelmap action is not permitted in general. | [][RelabelingRule](#relabelingrule) | false |
+| tls | Configures the scrape request's TLS settings. | *TLS | false |
 
 [Back to TOC](#table-of-contents)
 
@@ -591,9 +607,23 @@ SecretOrConfigMap allows to specify data as a Secret or ConfigMap. Fields are mu
 
 [Back to TOC](#table-of-contents)
 
+## TLS
+
+TLS specifies TLS configuration parameters from Kubernetes resources.
+
+
+<em>appears in: [HTTPClientConfig](#httpclientconfig)</em>
+
+| Field | Description | Scheme | Required |
+| ----- | ----------- | ------ | -------- |
+| serverName | Used to verify the hostname for the targets. | string | false |
+| insecureSkipVerify | Disable target certificate validation. | bool | false |
+
+[Back to TOC](#table-of-contents)
+
 ## TLSConfig
 
-SafeTLSConfig specifies TLS configuration parameters from Kubernetes resources.
+TLSConfig specifies TLS configuration parameters from Kubernetes resources.
 
 
 <em>appears in: [AlertmanagerEndpoints](#alertmanagerendpoints)</em>
