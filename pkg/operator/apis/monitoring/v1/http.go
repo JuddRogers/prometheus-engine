@@ -8,5 +8,7 @@ func (c *TLS) ToPrometheusConfig() *config.TLSConfig {
 	return &config.TLSConfig{
 		InsecureSkipVerify: c.InsecureSkipVerify,
 		ServerName:         c.ServerName,
+		MinVersion:         c.MinVersion,
+		MaxVersion:         c.MaxVersion,
 	}
 }

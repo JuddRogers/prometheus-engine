@@ -281,6 +281,12 @@ spec:
                               required:
                               - key
                               x-kubernetes-map-type: atomic
+                            maxVersion:
+                              type: integer
+                              description: Maximum TLS version.
+                            minVersion:
+                              type: integer
+                              description: Minimum TLS version.
                             serverName:
                               type: string
                               description: Used to verify the hostname for the targets.

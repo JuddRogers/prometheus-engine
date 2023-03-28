@@ -618,6 +618,8 @@ TLS specifies TLS configuration parameters from Kubernetes resources.
 | ----- | ----------- | ------ | -------- |
 | serverName | Used to verify the hostname for the targets. | string | false |
 | insecureSkipVerify | Disable target certificate validation. | bool | false |
+| minVersion | Minimum TLS version. | config.TLSVersion | false |
+| maxVersion | Maximum TLS version. | config.TLSVersion | false |
 
 [Back to TOC](#table-of-contents)
 
@@ -635,6 +637,8 @@ TLSConfig specifies TLS configuration parameters from Kubernetes resources.
 | keySecret | Secret containing the client key file for the targets. | *[v1.SecretKeySelector](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#secretkeyselector-v1-core) | false |
 | serverName | Used to verify the hostname for the targets. | string | false |
 | insecureSkipVerify | Disable target certificate validation. | bool | false |
+| minVersion | Minimum TLS version. | config.TLSVersion | false |
+| maxVersion | Maximum TLS version. | config.TLSVersion | false |
 
 [Back to TOC](#table-of-contents)
 

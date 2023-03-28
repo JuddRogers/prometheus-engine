@@ -197,6 +197,10 @@ type TLS struct {
 	ServerName string `json:"serverName,omitempty"`
 	// Disable target certificate validation.
 	InsecureSkipVerify bool `json:"insecureSkipVerify,omitempty"`
+	// Minimum TLS version.
+	MinVersion config.TLSVersion `json:"minVersion,omitempty"`
+	// Maximum TLS version.
+	MaxVersion config.TLSVersion `json:"maxVersion,omitempty"`
 }
 
 // TLSConfig specifies TLS configuration parameters from Kubernetes resources.
@@ -211,6 +215,10 @@ type TLSConfig struct {
 	ServerName string `json:"serverName,omitempty"`
 	// Disable target certificate validation.
 	InsecureSkipVerify bool `json:"insecureSkipVerify,omitempty"`
+	// Minimum TLS version.
+	MinVersion config.TLSVersion `json:"minVersion,omitempty"`
+	// Maximum TLS version.
+	MaxVersion config.TLSVersion `json:"maxVersion,omitempty"`
 }
 
 // SecretOrConfigMap allows to specify data as a Secret or ConfigMap. Fields are mutually exclusive.

@@ -1,0 +1,7 @@
+kind: TempConfig
+metadata:
+  name: common
+tls:
+  insecureSkipVerify: true
+  # TLS 1.3 (version 0x0304)
+  minVersion: 772

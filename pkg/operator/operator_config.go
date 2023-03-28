@@ -521,6 +521,8 @@ func (r *operatorConfigReconciler) makeAlertmanagerConfigs(ctx context.Context, 
 			tlsCfg := promcommonconfig.TLSConfig{
 				InsecureSkipVerify: am.TLS.InsecureSkipVerify,
 				ServerName:         am.TLS.ServerName,
+				MinVersion:         am.TLS.MinVersion,
+				MaxVersion:         am.TLS.MaxVersion,
 			}
 
 			if am.TLS.CA != nil {
